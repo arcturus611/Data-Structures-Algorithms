@@ -10,8 +10,7 @@ public class ListStack implements DStack {
 	
 	@Override
 	public boolean isEmpty() {
-		if(this.head!=null) return false; 
-		else return true; 
+		return (this.head==null);
 	}
 
 	@Override
@@ -22,7 +21,6 @@ public class ListStack implements DStack {
 			ListStackNode oldHead = this.head; 
 			this.head = new ListStackNode(d, oldHead);
 		}
-		System.out.println("Push " + d);
 	}
 
 	@Override
