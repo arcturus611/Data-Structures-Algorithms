@@ -25,15 +25,15 @@ public class ArrayStack implements DStack {
 	@Override
 	public double pop() {
 		if(!isEmpty()){
-			this.position--; 
+			if(this.position>0) this.position--; 
 			return this.ArrayStackHead[this.position];
 		}else throw(new EmptyStackException());
 	}
 
 	@Override
 	public double peek() {
-		// TODO Auto-generated method stub
-		return 0;
+		if(!isEmpty()) return this.ArrayStackHead[this.position - 1];
+		else throw(new EmptyStackException());
 	}
 
 }
