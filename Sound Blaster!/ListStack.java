@@ -9,7 +9,7 @@ public class ListStack implements DStack {
 	}
 	
 	@Override
-	public boolean isEmpty() {		
+	public boolean isEmpty() {
 		if(this.head!=null) return false; 
 		else return true; 
 	}
@@ -19,8 +19,6 @@ public class ListStack implements DStack {
 		if (this.head == null){	
 			this.head = new ListStackNode(d, null); 
 		}else{
-			/*ListStackNode newHead = new ListStackNode(d, this.head);
-			this.head = newHead; */
 			ListStackNode oldHead = this.head; 
 			this.head = new ListStackNode(d, oldHead);
 		}
@@ -29,28 +27,19 @@ public class ListStack implements DStack {
 
 	@Override
 	public double pop() {
-		ListStackNode current = head; 
-		ListStackNode previous = head; 
-		
-		while(current.next!=null){
-			previous = current; 
-			current = current.next; 
-		}
-		
-		double d = current.data;
-		if (current == this.head) this.head = null; 
-		else previous.next = null;
-		System.out.println("Pop " + d);		
-		return d;
+		if(!isEmpty()){
+			ListStackNode oldHead = this.head;
+			double d = oldHead.data; 
+			this.head = oldHead.next;
+			return d; 
+		}else 
+			throw(new EmptyStackException());
 	}
 
 	@Override
 	public double peek() {
-		if (head!=null){
-			double d = head.data; 
-			System.out.println("Peek");
-
-			return d; 
+		if (!isEmpty()){
+			return head.data; 
 		}else 
 			throw(new EmptyStackException()); 
 	}
